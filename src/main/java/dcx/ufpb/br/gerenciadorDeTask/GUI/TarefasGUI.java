@@ -22,7 +22,7 @@ public class TarefasGUI extends JFrame {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon fundo = new ImageIcon(".Imagens/TaskFundo.jpg");
+                ImageIcon fundo = new ImageIcon("./Imagens/TaskFundo.jpg");
                 g.drawImage(fundo.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -35,7 +35,7 @@ public class TarefasGUI extends JFrame {
         tituloPanel.setOpaque(false); // Permite que o fundo da imagem apareça
 
         // Configurando o ícone
-        ImageIcon icone = new ImageIcon(".Imagens/iconTask.png");
+        ImageIcon icone = new ImageIcon("./Imagens/iconTask.png");
         Image iconeRedimensionada = icone.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH); // Tamanho desejado
         icone = new ImageIcon(iconeRedimensionada);
         JLabel iconeLabel = new JLabel(icone);
