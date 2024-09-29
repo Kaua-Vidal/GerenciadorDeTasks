@@ -1,7 +1,7 @@
 package dcx.ufpb.br.gerenciadorDeTask.controllers;
 
 import dcx.ufpb.br.gerenciadorDeTask.SistemaTarefas;
-import dcx.ufpb.br.gerenciadorDeTask.TarefaInexistenteException;
+import dcx.ufpb.br.gerenciadorDeTask.exceptions.TarefaInexistenteException;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
