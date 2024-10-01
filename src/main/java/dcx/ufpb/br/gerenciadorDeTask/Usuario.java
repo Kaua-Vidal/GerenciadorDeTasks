@@ -1,5 +1,7 @@
 package dcx.ufpb.br.gerenciadorDeTask;
 
+import dcx.ufpb.br.gerenciadorDeTask.exceptions.UsuarioNaoEncontradoException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -45,9 +47,20 @@ public class Usuario {
         return Objects.hashCode(nome);
     }
 
+    public String listarTarefas(){
+
+        StringBuilder sb = new StringBuilder();
+        for (Tarefa t : this.tarefasDoUsuario){
+            sb.append(t.toString()).append("\n");
+        }
+
+        return sb.toString();
+    }
+
+
     @Override
     public String toString() {
-        return "Usuario de nome " + nome + '\'' +
-                ", tarefasDoUsuario " + tarefasDoUsuario;
+        return "Usuario de nome: " + this.nome + "\n" +
+                "TarefasDoUsuario: " + this.listarTarefas();
     }
 }

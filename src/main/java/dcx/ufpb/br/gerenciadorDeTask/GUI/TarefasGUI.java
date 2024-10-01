@@ -1,16 +1,14 @@
 package dcx.ufpb.br.gerenciadorDeTask.GUI;
 
-import dcx.ufpb.br.gerenciadorDeTask.GerenciadorDeTarefas;
+import dcx.ufpb.br.gerenciadorDeTask.GerenciadorDeTarefasMap;
 import dcx.ufpb.br.gerenciadorDeTask.SistemaTarefas;
-import dcx.ufpb.br.gerenciadorDeTask.controllers.TarefasCadastraController;
-import dcx.ufpb.br.gerenciadorDeTask.controllers.TarefasConcluidaController;
-import dcx.ufpb.br.gerenciadorDeTask.controllers.TarefasRemoveController;
+import dcx.ufpb.br.gerenciadorDeTask.controllers.*;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class TarefasGUI extends JFrame {
-    SistemaTarefas tarefa = new GerenciadorDeTarefas();
+    SistemaTarefas tarefa = new GerenciadorDeTarefasMap();
     JMenuBar barraDeMenu = new JMenuBar();
 
     public TarefasGUI() {
@@ -56,27 +54,35 @@ public class TarefasGUI extends JFrame {
         fundoPanel.add(tituloPanel, BorderLayout.NORTH);
 
         // Configurando os menus
-        JMenu menuCadastrar = new JMenu("Cadastrar");
-        JMenuItem menuCadastrarTarefa = new JMenuItem("Cadastrar tarefa");
-        menuCadastrar.add(menuCadastrarTarefa);
+        JMenu menuUsuario = new JMenu("Usuário");
+        JMenuItem menuCadastrarUsuario = new JMenuItem("Cadastrar Usuário");
+        JMenuItem menuProcurarUsuario = new JMenuItem("Procurar Usuário");
+        JMenuItem menuRemoverUsuario = new JMenuItem("Remover Usuário");
+        menuUsuario.add(menuCadastrarUsuario);
+        menuUsuario.add(menuProcurarUsuario);
+        menuUsuario.add(menuRemoverUsuario);
 
-        JMenu menuRemover = new JMenu("Remover");
+
+        JMenu menuTarefas = new JMenu("Tarefas");
         JMenuItem menuRemoverTarefa = new JMenuItem("Remover tarefa");
-        menuRemover.add(menuRemoverTarefa);
-
-        JMenu menuConcluida = new JMenu("Concluida");
         JMenuItem menuConcluidaTarefa = new JMenuItem("Marcar tarefa como concluída");
-        menuConcluida.add(menuConcluidaTarefa);
+        JMenuItem menuCadastrarTarefa = new JMenuItem("Cadastrar Tarefa");
+        menuTarefas.add(menuRemoverTarefa);
+        menuTarefas.add(menuConcluidaTarefa);
+        menuTarefas.add(menuCadastrarTarefa);
+
 
         // Adicionando ações aos itens dos menus
         menuRemoverTarefa.addActionListener(new TarefasRemoveController(tarefa, this));
         menuCadastrarTarefa.addActionListener(new TarefasCadastraController(tarefa, this));
         menuConcluidaTarefa.addActionListener(new TarefasConcluidaController(tarefa, this));
+        menuCadastrarUsuario.addActionListener(new CadastraUsuarioController(tarefa, this));
+        menuProcurarUsuario.addActionListener(new ProcurarUsuarioController(tarefa, this));
+        menuRemoverUsuario.addActionListener(new RemoveUsuarioController(tarefa, this));
 
         // Configurando a barra de menu
-        barraDeMenu.add(menuCadastrar);
-        barraDeMenu.add(menuRemover);
-        barraDeMenu.add(menuConcluida);
+        barraDeMenu.add(menuUsuario);
+        barraDeMenu.add(menuTarefas);
         setJMenuBar(barraDeMenu);
 
         // Adiciona o painel de fundo ao JFrame

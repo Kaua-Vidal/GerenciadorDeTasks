@@ -12,11 +12,11 @@ public interface SistemaTarefas {
 
 
     /**
-     * @param descricao descrição da tarefa a ser cadastrada
-     * @param dataVencimento a data de vencimento da tarefa a ser cadastrada
+     * @param nomeUsuario nome do usuário que será adicionado a tarefa
+     * @param tarefa tarafa que será adicionada
      * @throws TarefaJaExisteException caso a tarefa ja exista
      */
-    public void cadastraTarefa(String descricao, String dataVencimento) throws TarefaJaExisteException;
+    public void cadastraTarefa(String nomeUsuario, Tarefa tarefa) throws TarefaJaExisteException, UsuarioNaoEncontradoException;
 
     /**
      * @param descricao recebe a descrição da tarefa a ser removida
